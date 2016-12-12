@@ -1,0 +1,26 @@
+flags: {}
+ghc-options:
+  # some libraries, namely double-conversion required by liquidhaskell, do not compile properly with some optimisations enabled on GHC 7.10.3
+  double-conversion: -opta-Wa,-mrelax-relocations=no
+packages:
+- '.'
+- location:
+    git: https://github.com/ucsd-progsys/liquidhaskell
+    commit: 300524229e49c50d8842e191fdb7e1d537853019 # develop as of 2016-12-12 1300h
+  subdirs:
+  - '.'
+  - liquid-fixpoint
+  - liquiddesugar
+  - prover
+  extra-dep: true
+extra-deps:
+- dotgen-0.4.2
+- fgl-visualize-0.1.0.1
+- intern-0.9.1.4
+- liquidhaskell-cabal-0.1.1.0
+- located-base-0.1.1.0
+- z3-4.1.0
+compiler-check: newer-minor
+explicit-setup-deps:
+  ! '*': true
+resolver: lts-6.26

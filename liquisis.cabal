@@ -1,0 +1,29 @@
+name:        liquisis
+version:     0.0.1
+synopsis:    Program synthesis from the Liquid Types type refinement system
+description: Libquisise is a program synthesis engine using the Liquid Types Refinement
+             Type system and is based on work by Nadia Polikarpova (Synquid) and LiquidHaskell (Pat Rondon)
+
+author:             Justin Lynn, Nadia Polikarpova (Synquid), Pat Rondon (LiquidHaskell)
+maintainer:         j@jaesharp.com
+category:           ProgramSythesis
+extra-source-files: README.md
+build-type:         Custom
+cabal-version:      >= 1.10
+
+flag liquidtypes
+  Description: After build, verify program using liquid LiquidHaskell verifier
+  Default:     True
+
+library
+  default-language:   Haskell2010
+  default-extensions: QuasiQuotes
+
+  hs-source-dirs:     src
+
+  build-depends:      base > 4.8 && < 5
+                    , liquidhaskell == 0.6.0.0
+                    , liquidhaskell-cabal >= 0.1.1
+
+  exposed-modules:    Liquisis
+                    , Language.Haskell.Liquisis.UX.QuasiQuoter
